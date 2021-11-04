@@ -24,18 +24,11 @@ public class Parent : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            player.SetParent(null);
-            isParenting = false;
-        }
-    }
-
     public void GetDown()
     {
+        player.SetParent(null);
         isParenting = false;
+       
     }
 
 
