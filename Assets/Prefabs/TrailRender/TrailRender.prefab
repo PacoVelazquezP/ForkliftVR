@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3699362217500727580}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.1947575, y: 6.5640326, z: -40.300117}
+  m_LocalPosition: {x: 1.2, y: -0.15, z: 7.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -45,12 +45,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Targets:
-  - {fileID: 4125089929135755557, guid: 51cc0ca160c103545b0ee7a55107faa6, type: 3}
-  - {fileID: 4980792811509331529, guid: e1732751827bf4a488cfe49753ae2f62, type: 3}
-  - {fileID: 2890871008915860352, guid: da35f25fe1f006e4a893bd4e01007525, type: 3}
+  - {fileID: 7431240717681162612, guid: 3e2ca2ea07d19884bb2a1620320cd5b2, type: 3}
+  - {fileID: 896804637550433768, guid: 51cc0ca160c103545b0ee7a55107faa6, type: 3}
+  - {fileID: 3690037312861667373, guid: e1732751827bf4a488cfe49753ae2f62, type: 3}
+  - {fileID: 1268747693198085227, guid: b76c5651ea491dd4a99734bde142e341, type: 3}
+  - {fileID: 2053259366931408514, guid: b94ad756335b7244d8ab1bdde81c6768, type: 3}
   nextPosIndex: 0
-  speed: 50
-  destroyObjTime: 40
+  speed: 7
 --- !u!96 &1894855032738396530
 TrailRenderer:
   serializedVersion: 2
@@ -91,10 +92,10 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 5
+  m_Time: 0.7
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 2.5
+    widthMultiplier: 0.8
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -109,7 +110,7 @@ TrailRenderer:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: 0.74285626
+        value: 0.45918596
         inSlope: 0
         outSlope: 0
         tangentMode: 0
