@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Lever
   - Boxes
+  - TriggerStart
+  - Floor
   layers:
   - Default
   - TransparentFX

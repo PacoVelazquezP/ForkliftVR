@@ -28,7 +28,7 @@ public class SpawnObj : MonoBehaviour
             {
                 nextSpawn = Time.time + spawnRate;
                 Instantiate(trailRenderObj);
-                Debug.Log("spawn");
+                //Debug.Log("spawn");
             }
         }
     }
