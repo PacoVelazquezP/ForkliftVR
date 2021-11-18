@@ -7,6 +7,9 @@ TagManager:
   - Lever
   - Fork
   - Crane
+  - projectile
+  - FxTemporaire
+  - Barril
   layers:
   - Default
   - TransparentFX
