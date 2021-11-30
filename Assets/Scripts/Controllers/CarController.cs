@@ -6,6 +6,8 @@ namespace Valve.VR.InteractionSystem
 {
     public class CarController : MonoBehaviour
     {
+        AudioManager audioManager;
+
         public LinearMapping linearMapping;
         public LinearMapping wheelMapping;
         private const string HORIZONTAL = "Horizontal";
@@ -13,7 +15,7 @@ namespace Valve.VR.InteractionSystem
 
         private float horizontalInput;
         private float vertivalInput;
-        private float currentBreakForce;
+        public float currentForce;
         private float currentSteerAngle;
       
 
@@ -28,6 +30,7 @@ namespace Valve.VR.InteractionSystem
 
         [SerializeField] private bool moving;
         [SerializeField] private bool isBreaking;
+        public bool playOneShot;
 
         [Header("Wheels")]
         [SerializeField] private WheelCollider frontLeftWheel;
@@ -40,6 +43,13 @@ namespace Valve.VR.InteractionSystem
         [SerializeField] private Transform rearLeftTransform;
         [SerializeField] private Transform rearRightTransform;
 
+
+        private void Start()
+        {
+            currentForce = motorForce;
+            audioManager = GetComponent<AudioManager>();
+            audioManager = FindObjectOfType<AudioManager>();
+        }
         private void FixedUpdate()
         {
             if (linearMapping == null)
@@ -55,8 +65,11 @@ namespace Valve.VR.InteractionSystem
                 UpdateWheels();
                 AddForceCar();
                 ApplyBreaking();
+                playOneShot = true;
+             
             }
-           
+
+
         }
 
         private void HandleMotor()
@@ -77,7 +90,7 @@ namespace Valve.VR.InteractionSystem
                 rearRightWheel.motorTorque = motorForce;
                 Debug.Log("Adding force");
                 isBreaking = false;
-                FindObjectOfType<AudioManager>().Play("Reverse");
+              //  FindObjectOfType<AudioManager>().Play("Reverse");
             }
 
             if (linearMapping.value > 0.9)
@@ -87,7 +100,7 @@ namespace Valve.VR.InteractionSystem
                 rearRightWheel.motorTorque = motorForce;
                 isBreaking = false;
 
-                FindObjectOfType<AudioManager>().Play("Accelerate");
+              //  FindObjectOfType<AudioManager>().Play("Accelerate");
             }
 
             if (linearMapping.value < 0.8 && linearMapping.value > 0.2)
@@ -157,12 +170,19 @@ namespace Valve.VR.InteractionSystem
             if (!moving)
             {
                 moving = true;
+                Debug.Log("soundStop");
+                audioManager.PlayStop();
             }
             else
             {
                 moving = false;
+                Debug.Log("soundStart");
+                audioManager.PlayStart();
             }
         }
+
     }
+
+  
 
 }

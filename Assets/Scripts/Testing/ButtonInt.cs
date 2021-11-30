@@ -26,7 +26,7 @@ using Valve.VR;
             //movePosition = FindObjectOfType<MovePosition>();
             this.carController.ForMove();
 
-            // Rigidbody rigidbody = moving.GetComponent<Rigidbody>();
+           
 
             yield return null;
         }
