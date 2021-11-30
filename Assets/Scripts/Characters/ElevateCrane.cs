@@ -6,6 +6,7 @@ using Valve.VR.InteractionSystem;
 
 public class ElevateCrane : MonoBehaviour
 {
+    AudioManager audioManager;
     [SerializeField] private LinearMapping leverMapping;
     [SerializeField] private Vector3 initialPosY;
     [SerializeField] private Vector3 endPosY;
@@ -17,6 +18,7 @@ public class ElevateCrane : MonoBehaviour
     void Awake()
     {
         my_rigid = GetComponent<Rigidbody>();
+        audioManager = FindObjectOfType<AudioManager>();
     }
 
     // Update is called once per frame
@@ -44,15 +46,20 @@ public class ElevateCrane : MonoBehaviour
             if(leverMapping.value == 1f /*&& !reachedLimit*/)
             {   
                 fork.transform.Translate(Vector3.up * Time.deltaTime);
+                audioManager.PlayLoopElevateUp();
                
             }
 
             if (leverMapping.value == 0f /*&& !reachedLimit*/ )
             {
-                fork.transform.Translate(-Vector3.up * Time.deltaTime);   
-                
+                fork.transform.Translate(-Vector3.up * Time.deltaTime);
+                audioManager.PlayLoopElevateDown();
             }
 
+            if(leverMapping.value != 0 && leverMapping.value != 1)
+            {
+                audioManager.StopLoopElevate();
+            }
         }
 
      

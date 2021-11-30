@@ -83,14 +83,15 @@ namespace Valve.VR.InteractionSystem
         private void AddForceCar()
         {
             
-            if (linearMapping.value < 0.1)
+            if (linearMapping.value < 0.1)//Reverse
             {
                 motorForce = -aceleractionForce;
                 rearLeftWheel.motorTorque = motorForce;
                 rearRightWheel.motorTorque = motorForce;
                 Debug.Log("Adding force");
                 isBreaking = false;
-              //  FindObjectOfType<AudioManager>().Play("Reverse");
+                audioManager.PlayLoopReverse();
+                //  FindObjectOfType<AudioManager>().Play("Reverse");
             }
 
             if (linearMapping.value > 0.9)
@@ -99,6 +100,7 @@ namespace Valve.VR.InteractionSystem
                 rearLeftWheel.motorTorque = motorForce;
                 rearRightWheel.motorTorque = motorForce;
                 isBreaking = false;
+                
 
               //  FindObjectOfType<AudioManager>().Play("Accelerate");
             }
@@ -106,6 +108,7 @@ namespace Valve.VR.InteractionSystem
             if (linearMapping.value < 0.8 && linearMapping.value > 0.2)
             {              
                 isBreaking = true;
+                audioManager.StopLoopReverse();
             }
         }
 
